@@ -1,1 +1,116 @@
-hello world - it works :-)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Risk Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Medical Risk Assessment Tool</h1>
+        <p class="subtitle">
+          Evidence-based risk calculation for clinical decision making
+        </p>
+      </header>
+
+      <main class="main-content">
+        <section class="intro-section">
+          <p class="intro-text">
+            This tool calculates risk percentages based on validated clinical
+            parameters. Please ensure all measurements are accurate and recent.
+            This calculator is intended for healthcare professionals and should
+            not replace clinical judgment.
+          </p>
+          <p class="model-link">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              📄 View Published Model Documentation
+            </a>
+          </p>
+        </section>
+
+        <form id="risk-calculator-form" class="calculator-form">
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required />
+            <span class="calculated-age" id="calculated-age"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Anaemia Status:</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="anaemia" value="yes" required />
+                <span class="radio-custom"></span>
+                Yes
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="anaemia" value="no" required />
+                <span class="radio-custom"></span>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="haemoglobin">Haemoglobin Level (g/L):</label>
+            <input
+              type="number"
+              id="haemoglobin"
+              name="haemoglobin"
+              min="20"
+              max="180"
+              step="0.1"
+              required
+            />
+            <div class="input-helper">Range: 20-180 g/L</div>
+          </div>
+
+          <div class="form-group">
+            <label for="parasite-count">Parasite Count:</label>
+            <select id="parasite-count" name="parasite-count" required>
+              <option value="">Select parasite count</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="not-available">Not Available</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span class="btn-text">Calculate Risk</span>
+            <span class="btn-loader" id="btn-loader"></span>
+          </button>
+        </form>
+
+        <div class="result-section" id="result-section">
+          <div class="result-card">
+            <h2>Risk Assessment Result</h2>
+            <div class="risk-percentage" id="risk-percentage">--</div>
+            <div class="risk-interpretation" id="risk-interpretation">
+              Enter patient data above to calculate risk percentage
+            </div>
+            <div class="disclaimer">
+              <strong>Disclaimer:</strong> This tool provides estimated risk
+              based on the input parameters. Always consider the complete
+              clinical picture when making treatment decisions.
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>
+          &copy; 2025 Medical Risk Calculator. For healthcare professional use
+          only.
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
