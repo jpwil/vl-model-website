@@ -2,59 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Online tool for calculating risk of visceral leishmaniasis relapse within 6 months of initial treatment."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medical Risk Calculator</title>
+    <title>VL relapse risk</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <h1>Medical Risk Assessment Tool</h1>
-        <p class="subtitle">
-          Evidence-based risk calculation for clinical decision making
-        </p>
+        <h1>VL relapse risk calculator</h1>
       </header>
 
       <main class="main-content">
         <section class="intro-section">
           <p class="intro-text">
-            This tool calculates risk percentages based on validated clinical
-            parameters. Please ensure all measurements are accurate and recent.
-            This calculator is intended for healthcare professionals and should
-            not replace clinical judgment.
+            This tool calculates the 6-month relapse risk for immunocompetent
+            (HIV-negative) visceral leishmaniasis patients who show an initial
+            response to treatment. The tool is based on a prediction model
+            developed from 4,599 patients and 228 relapses recruited into Indian
+            and Nepalese clinical trials between 2000 and 2017.
           </p>
-          <p class="model-link">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              📄 View Published Model Documentation
-            </a>
-          </p>
+        </section>
+        <section class="instructions-section">
+          <h2>Instructions</h2>
+          <ul class="instructions-list">
+            <li>
+              Please only use for immunocompetent patients who show an initial
+              treatment response
+            </li>
+            <li>
+              Please enter patient details that correspond to the timing of
+              initial treatment
+            </li>
+            <li>
+              If no tissue aspirate was performed, please select 'n/a' for
+              parasite count
+            </li>
+          </ul>
         </section>
 
         <form id="risk-calculator-form" class="calculator-form">
           <div class="form-group">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required />
-            <span class="calculated-age" id="calculated-age"></span>
-          </div>
-
-          <div class="form-group">
-            <label>Anaemia Status:</label>
+            <!-- <label>Sex</label> -->
             <div class="radio-group">
-              <label class="radio-label">
-                <input type="radio" name="anaemia" value="yes" required />
-                <span class="radio-custom"></span>
-                Yes
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="anaemia" value="no" required />
-                <span class="radio-custom"></span>
-                No
-              </label>
+              <label class="radio-label">Male</label>
+              <input type="radio" id="male" name="sex" value="Male" required />
+              <label class="radio-label">Female</label>
+              <input
+                type="radio"
+                id="male"
+                name="sex"
+                value="Female"
+                required
+              />
             </div>
           </div>
+          <div class="form-group">
+            <label for="age">Age (years)</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="0"
+              max="110"
+              required
+            />
+            <div class="input-helper">Range: 0-110 years</div>
+          </div>
 
           <div class="form-group">
-            <label for="haemoglobin">Haemoglobin Level (g/L):</label>
+            <label for="haemoglobin">Haemoglobin Level (g/L)</label>
             <input
               type="number"
               id="haemoglobin"
@@ -68,21 +88,35 @@
           </div>
 
           <div class="form-group">
+            <label for="feverdur">Fever duration (days)</label>
+            <input
+              type="number"
+              id="feverdur"
+              name="feverdur"
+              min="1"
+              max="1000"
+              step="1"
+              required
+            />
+            <div class="input-helper">Range: 1-1000 days</div>
+          </div>
+
+          <div class="form-group">
             <label for="parasite-count">Parasite Count:</label>
             <select id="parasite-count" name="parasite-count" required>
               <option value="">Select parasite count</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="not-available">Not Available</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+              <option value="6">6+</option>
+              <option value="not-available">n/a</option>
             </select>
           </div>
 
           <button type="submit" class="submit-btn" id="submit-btn">
-            <span class="btn-text">Calculate Risk</span>
+            <span class="btn-text">Calculate 6-month relapse risk</span>
             <span class="btn-loader" id="btn-loader"></span>
           </button>
         </form>
@@ -97,18 +131,17 @@
             <div class="disclaimer">
               <strong>Disclaimer:</strong> This tool provides estimated risk
               based on the input parameters. Always consider the complete
-              clinical picture when making treatment decisions.
+              clinical picture when making management decisions.
             </div>
           </div>
         </div>
       </main>
 
-      <footer class="footer">
+      <!-- <footer class="footer">
         <p>
-          &copy; 2025 Medical Risk Calculator. For healthcare professional use
-          only.
+          &copy; Footnote text goes here, e.g. license information, IDDO reference, etc. 
         </p>
-      </footer>
+      </footer> -->
     </div>
 
     <script src="script.js"></script>

@@ -12,25 +12,8 @@ const riskPercentage = document.getElementById("risk-percentage");
 const riskInterpretation = document.getElementById("risk-interpretation");
 
 // Utility functions
-function calculateAge(birthDate) {
-  const today = new Date();
-  const birth = new Date(birthDate);
-  let age = today.getFullYear() - birth.getFullYear();
-  const monthDiff = today.getMonth() - birth.getMonth();
 
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-
-  return age;
-}
-
-function formatAge(age) {
-  if (age === 1) return "1 year old";
-  return `${age} years old`;
-}
-
-// Dummy formula for risk calculation
+// Formula for risk calculation
 function calculateRisk(data) {
   // This is a placeholder formula - replace with your actual formula
   let risk = 0;
@@ -146,7 +129,6 @@ function validateForm(formData) {
   if (!formData.parasiteCount) {
     errors.push("Please select parasite count");
   }
-
   return errors;
 }
 
@@ -154,28 +136,6 @@ function showValidationErrors(errors) {
   // Simple alert for now - you could enhance this with better UI
   alert("Please correct the following errors:\n\n" + errors.join("\n"));
 }
-
-// Event listeners
-dobInput.addEventListener("change", function () {
-  if (this.value) {
-    const age = calculateAge(this.value);
-    calculatedAge.textContent = `(${formatAge(age)})`;
-    calculatedAge.style.display = "block";
-  } else {
-    calculatedAge.style.display = "none";
-  }
-});
-
-// Real-time age calculation as user types/changes date
-dobInput.addEventListener("input", function () {
-  if (this.value) {
-    const age = calculateAge(this.value);
-    if (age >= 0 && age <= 120) {
-      calculatedAge.textContent = `(${formatAge(age)})`;
-      calculatedAge.style.display = "block";
-    }
-  }
-});
 
 // Form submission
 form.addEventListener("submit", async function (e) {
