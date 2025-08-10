@@ -65,8 +65,7 @@ body {
 }
 
 /* Introduction section */
-.intro-section,
-.instructions-section {
+.intro-section {
   background: var(--surface-color);
   padding: 0.4rem 1.4rem;
   border-radius: var(--border-radius);
@@ -154,6 +153,14 @@ body {
   display: flex;
   gap: 1.5rem;
   margin-top: 0.5rem;
+  flex-wrap: nowrap;
+  align-items: centre;
+}
+
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Submit button */
