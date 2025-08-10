@@ -31,7 +31,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          ssh_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: jpwil/jpwil.github.io
           publish_dir: ./public # folder to deploy
           destination_dir: model # target folder in gh-pages repo
