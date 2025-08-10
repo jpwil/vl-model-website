@@ -1,0 +1,39 @@
+name: Deploy to my GitHub Pages
+on:
+  push:
+    branches: [main] # or whatever your default branch is
+  workflow_dispatch: # allows manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      # - name: Setup Node.js (if needed)
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "18"
+      #     cache: "npm" # remove if not using npm
+
+      # - name: Install dependencies (if needed)
+      #   run: npm install
+
+      # - name: Build project (customize this)
+      #   run: |
+      #     # Add your build commands here
+      #     # e.g., npm run build, or just copy files
+      #     mkdir -p dist
+      #     cp -r src/* dist/  # example: copy src folder to dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: jpwil/jpwil.github.io
+          publish_dir: ./public # folder to deploy
+          destination_dir: model # target folder in gh-pages repo
+          publish_branch: main
+          commit_message: "Deploy /public folder to the model folder in my github pages"
