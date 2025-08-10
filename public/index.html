@@ -42,21 +42,23 @@
         </section>
 
         <form id="risk-calculator-form" class="calculator-form">
-          <div class="form-group">
-            <!-- <label>Sex</label> -->
-            <div class="radio-group">
-              <label class="radio-label">Male</label>
+          <div class="radio-group">
+            <div class="radio-alignment">
               <input type="radio" id="male" name="sex" value="Male" required />
-              <label class="radio-label">Female</label>
+              <label class="radio-label" for="male">Male</label>
+            </div>
+            <div class="radio-alignment">
               <input
                 type="radio"
-                id="male"
+                id="female"
                 name="sex"
                 value="Female"
                 required
               />
+              <label class="radio-label" for="female">Female</label>
             </div>
           </div>
+
           <div class="form-group">
             <label for="age">Age (years)</label>
             <input
@@ -134,11 +136,17 @@
         </div>
       </main>
 
-      <!-- <footer class="footer">
+      <footer class="footer">
         <p>
-          &copy; Footnote text goes here, e.g. license information, IDDO reference, etc. 
+          Any comments or issues please
+          <a
+            href="https://github.com/jpwil/vl-model-website"
+            target="_blank"
+            rel="noopener noreferrer"
+            >contact me</a
+          >.
         </p>
-      </footer> -->
+      </footer>
     </div>
 
     <script src="script.js"></script>
